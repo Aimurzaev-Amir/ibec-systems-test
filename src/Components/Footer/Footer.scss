@@ -1,0 +1,33 @@
+@import "../../variables.scss";
+
+.footerFlex {
+  margin-top: 50px;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @extend %smallScreenPadding;
+  .companyRights {
+    font-size: 11px;
+    color: #000;
+    line-height: 15px;
+  }
+  .footerMenu {
+    width: 350px;
+    .footerMenuList {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .footerMenuItem {
+        white-space: nowrap;
+        list-style: none;
+        .footerMenuItemLink {
+          font-size: 11px;
+          color: #000;
+        }
+      }
+    }
+  }
+}

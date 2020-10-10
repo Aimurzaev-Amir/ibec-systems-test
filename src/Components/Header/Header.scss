@@ -1,0 +1,239 @@
+@import "../../variables.scss";
+
+.header {
+  margin-bottom: 40px;
+  .headerTop {
+    height: 70px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    @media (max-width: 790px) {
+      display: none;
+    }
+  }
+  .headerRow {
+    @media (max-width: 790px) {
+      padding-top: 30px;
+      grid-template-columns: 50px 1fr;
+    }
+    @extend %smallScreenPadding;
+    display: grid;
+    grid-template-areas:
+      "logo  title title title"
+      "logo nav nav nav";
+    grid-template-columns: 97px 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 14px;
+    .headerLogo {
+      background-color: #e20e12;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+      grid-area: logo;
+    }
+    .headerTitle {
+      grid-area: title;
+      color: $titleColor;
+      font-size: 24px;
+      margin-left: 16px;
+    }
+    .headerNav {
+      grid-area: nav;
+      @extend %whiteBorder;
+      background: linear-gradient(180deg, #ffffff 0%, #dbdbdb 100%);
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
+      .navList {
+        list-style: none;
+        display: flex;
+        position: relative;
+        .navItem {
+          text-align: center;
+          padding: 19px 0;
+          &:hover {
+            background: radial-gradient(
+              42.52% 48.35% at 50% 73.12%,
+              #ffffff 43.67%,
+              rgba(255, 255, 255, 0) 100%
+            );
+          }
+          &:first-child .navItemLink {
+            border: none;
+          }
+          &:hover .firstMenu {
+            opacity: 1;
+            visibility: visible;
+            transition: 0.5s;
+          }
+          .navItemLink,
+          .navItemSubMenu {
+            font-size: 13px;
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            border-left-width: 1px;
+            border-left-style: solid;
+            border-image: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0),
+                rgba(0, 0, 0, 0.35),
+                rgba(0, 0, 0, 0)
+              )
+              0 100%;
+            padding: 13px 33px;
+            @media (max-width: 1150px) {
+              padding: 13px;
+            }
+            @media (max-width: 790px) {
+              border: unset;
+              border-top: 1px solid $titleColor;
+              padding: 13px 0;
+              font-size: 16px;
+              &:hover {
+                color: $titleColor;
+              }
+            }
+          }
+          @media (max-width: 790px) {
+            margin: unset;
+            padding: 0;
+            text-align: left;
+          }
+          .menuDropDownList {
+            z-index: 99;
+            transform: translate(20px, 20px);
+            text-align: left;
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.5s;
+            background-color: #f2f2f2;
+            @extend %whiteBorder;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+            list-style: none;
+            &.show {
+              display: block;
+              position: absolute;
+              top: 100px;
+              left: 0;
+              height: 100%;
+            }
+            @extend %smallScreenPadding;
+            @media (max-width: 790px) {
+              display: none;
+              position: relative;
+              opacity: 1;
+              visibility: visible;
+              width: 100%;
+              transform: unset;
+              box-shadow: unset;
+              background-color: #fff;
+            }
+            .dropDownItem {
+              padding: 24px 20px;
+              font-size: 13px;
+              cursor: pointer;
+              &:hover {
+                background-color: #fff;
+                color: $titleColor;
+              }
+              &:hover .firstMenuItemLink {
+                color: $titleColor;
+              }
+              .dropDownItemCheckbox {
+                display: none;
+              }
+              .dropDownItemLink {
+                text-decoration: none;
+                color: #000;
+                white-space: nowrap;
+                font-size: 13px;
+                padding: 24px 20px;
+                @media (max-width: 790px) {
+                  padding: 0;
+                  white-space: unset;
+                  font-size: 16px;
+                  line-height: 10px;
+                }
+              }
+              &:hover .secondMenu {
+                opacity: 1;
+                visibility: visible;
+                transition: 0.5s;
+              }
+              .dropDownItemSubMenu {
+                padding: 0 20px;
+                @media (max-width: 790px) {
+                  font-size: 16px;
+                  padding: 0;
+                }
+              }
+              @media (max-width: 790px) {
+                padding: 13px 0;
+                border-top: 1px solid $titleColor;
+              }
+              .show .secondMenu{
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+              }
+            }
+            &.secondMenu {
+              transform: translate(90%);
+              @media (max-width: 790px) {
+                transform: unset;
+              }
+              .dropDownItem {
+                &:hover .secondMenuItemLink {
+                  color: $titleColor;
+                }
+              }
+            }
+            &.leftMenu {
+              transform: translate(-100%);
+              @media (max-width: 790px) {
+                transform: unset;
+              }
+            }
+          }
+        }
+        @media (max-width: 790px) {
+          flex-direction: column;
+          position: fixed;
+          right: 0;
+          top: 0;
+          width: 70%;
+          height: 100%;
+          background-color: $titleColor;
+          padding-left: 25px;
+          padding-right: 25px;
+          animation-name: closeMenu;
+          animation-duration: 1s;
+          z-index: 99;
+          transform: translateX(100%);
+          transition: 1s;
+          background-color: #fff;
+          .mobileMenuHeader {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            .mobileMenuLogo {
+              width: 50px;
+              height: 50px;
+              background-color: $titleColor;
+            }
+            .mobileMenuTitle {
+              padding-left: 30px;
+              font-size: 18px;
+              color: $titleColor;
+            }
+          }
+          &.showMenu {
+            transform: translateX(0);
+            transition: 1s;
+            padding-top: 30px;
+          }
+        }
+      }
+    }
+  }
+}

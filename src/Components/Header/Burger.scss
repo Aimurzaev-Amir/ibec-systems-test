@@ -1,0 +1,72 @@
+@import "../../variables.scss";
+
+.menu-icon {
+  display: none;
+  align-items: center;
+  z-index: 999;
+  position: relative;
+  margin: 0 20px 0 auto;
+  display: none;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  @media (max-width: 790px) {
+    display: flex;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+  }
+  &.show{
+    padding-top: 80px;
+    transition: 0s;
+  }
+  &::after {
+    z-index: 19;
+    position: relative;
+    display: none;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+  .menu-icon-line {
+    position: relative;
+    width: 25px;
+    height: 3px;
+    background-color: $titleColor;
+    &::before {
+      position: absolute;
+      left: 0;
+      top: -7px;
+      content: "";
+      width: 25px;
+      height: 3px;
+      background-color: $titleColor;
+      transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+    }
+    &::after {
+      position: absolute;
+      left: 0;
+      top: 7px;
+      content: "";
+      width: 25px;
+      height: 3px;
+      background-color: $titleColor;
+      transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
+    }
+  }
+  &.menu-icon-active {
+    .menu-icon-line {
+      background: transparent;
+      &::before {
+        transform: rotate(45deg);
+        top: 0;
+        transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+      }
+      &::after {
+        transform: rotate(-45deg);
+        top: 0;
+        transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
+      }
+    }
+  }
+}

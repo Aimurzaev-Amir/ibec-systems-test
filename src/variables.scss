@@ -1,0 +1,11 @@
+$titleColor: #e3000f;
+%whiteBorder {
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+%smallScreenPadding {
+  @media (max-width: 790px) {
+    padding-left: 25px!important;
+    padding-right: 25px!important;
+  }
+}

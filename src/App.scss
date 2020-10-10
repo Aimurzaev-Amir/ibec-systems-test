@@ -1,0 +1,15 @@
+@import "./variables.scss";
+
+.bgColor {
+  background: radial-gradient(
+      20.39% 19.48% at 50% 19.48%,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0.62) 77.79%,
+      rgba(255, 255, 255, 0.1) 100%
+    ),
+    linear-gradient(180deg, #dbdbdb 0%, #f8f8f8 29.17%, #f8f8f8 41.15%, #e3e3e3 100%);
+}
+.noMatch {
+  @extend %smallScreenPadding;
+  height: 75vh
+}
