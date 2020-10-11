@@ -1,4 +1,4 @@
 ### В проекте использовались: 
-React.js, Typescript, SCSS
+Yandex map, React.js, Typescript, SCSS
 ### Никогда не использовал:
 Typescript
