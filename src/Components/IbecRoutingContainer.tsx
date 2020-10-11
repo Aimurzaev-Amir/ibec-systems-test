@@ -7,11 +7,13 @@ import { Header } from "./Header/Header";
 import { MainPage } from "./MainPage/MainPage";
 
 export const IbecRouting: React.FC<any> = (props) => {
-  const NoMatch = () => (
-    <div className="noMatch">
-      <h3 className="mobilePaddings">No match for {props.location.pathname}</h3>
-    </div>
-  );
+  const NoMatch: React.FC = () => {
+    return (
+      <div className="noMatch">
+        <h3 className="mobilePaddings">No match for {props.location.pathname}</h3>
+      </div>
+    );
+  };
   return (
     <div className="bgColor">
       <Header />
