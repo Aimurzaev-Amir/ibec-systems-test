@@ -1,0 +1,300 @@
+@import "../../../variables.scss";
+
+.header {
+  margin-bottom: 40px;
+  .headerTop {
+    height: 70px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    @media (max-width: 790px) {
+      display: none;
+    }
+  }
+  .headerRow {
+    @media (max-width: 790px) {
+      padding-top: 30px;
+      grid-template-columns: 50px 1fr;
+    }
+    @extend %smallScreenPadding;
+    display: grid;
+    grid-template-areas:
+      "logo  title title title"
+      "logo nav nav nav";
+    grid-template-columns: 97px 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 14px;
+    .headerLogo {
+      background-color: #e20e12;
+      box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+      grid-area: logo;
+    }
+    .headerTitle {
+      grid-area: title;
+      color: $titleColor;
+      font-size: 24px;
+      margin-left: 16px;
+    }
+    .headerNav {
+      grid-area: nav;
+      @extend %whiteBorder;
+      background: linear-gradient(180deg, #ffffff 0%, #dbdbdb 100%);
+      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.35);
+      .navList {
+        &.showMenu {
+          transform: translateX(0);
+          transition: 1s;
+        }
+        list-style: none;
+        display: flex;
+        position: relative;
+        .navItem {
+          cursor: pointer;
+          text-align: center;
+          padding: 19px 0;
+          &:hover {
+            background: radial-gradient(
+              42.52% 48.35% at 50% 73.12%,
+              #ffffff 43.67%,
+              rgba(255, 255, 255, 0) 100%
+            );
+          }
+          &:first-child .navItemLink {
+            border: none;
+          }
+          &:hover .navItemSubMenu {
+            .navList {
+              transition: 1s;
+              opacity: 1;
+              visibility: visible;
+              height: unset;
+              width: unset;
+            }
+          }
+          .navItemLink,
+          .subMenuItem {
+            cursor: pointer;
+            font-size: 13px;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            border-left-width: 1px;
+            border-left-style: solid;
+            border-image: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0),
+                rgba(0, 0, 0, 0.35),
+                rgba(0, 0, 0, 0)
+              )
+              0 100%;
+            padding: 13px 33px;
+            @media (max-width: 1150px) {
+              padding: 13px;
+            }
+            @media (max-width: 790px) {
+              border: unset;
+              border-top: 1px solid $titleColor;
+              padding: 13px 0;
+              font-size: 16px;
+              &:hover {
+                color: $titleColor;
+              }
+            }
+          }
+          @media (max-width: 790px) {
+            margin: unset;
+            padding: 0;
+            text-align: left;
+          }
+          .navItemSubMenu {
+            @media (max-width: 790px) {
+              .show {
+                opacity: 1;
+                visibility: visible;
+                height: unset;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transition: 1s;
+                z-index: 98;
+                .navList {
+                  transform: translateX(0);
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  transform: unset;
+                  box-shadow: unset;
+                  background-color: #fff;
+                  transition: 1s;
+                }
+              }
+              .hide {
+                opacity: 0;
+                visibility: hidden;
+                height: 0;
+                transition: 1s;
+                .navList {
+                  transform: translateX(100%);
+                  transition: 1s;
+                }
+              }
+            }
+            .subMenuItem {
+              padding: 13px 33px;
+              @media (max-width: 790px) {
+                padding: 13px 0;
+              }
+            }
+            .mobileMenuHeader {
+              display: none;
+            }
+            .navList {
+              border-radius: 5px;
+              position: absolute;
+              z-index: 98;
+              transform: translate(20px, 20px);
+              box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+              background-color: #f2f2f2;
+              border: none;
+              display: block;
+              opacity: 0;
+              visibility: hidden;
+              height: 0;
+              width: 0;
+              @media (max-width: 790px) {
+                opacity: 1;
+                visibility: visible;
+                height: unset;
+              }
+              .navItem {
+                &:hover {
+                  background: #fff;
+                  border-radius: 5px;
+                }
+                &:hover .navList {
+                  opacity: 1;
+                  visibility: visible;
+                }
+                padding: 0;
+                .navItemLink,
+                .subMenuItem {
+                  padding: 24px 20px;
+                  border: none;
+                  white-space: nowrap;
+                  text-align: left;
+                  &:hover {
+                    color: $titleColor;
+                  }
+                  @media (max-width: 790px) {
+                    border-bottom: 1px solid $titleColor;
+                    padding: 13px 0;
+                  }
+                }
+                .navList {
+                  opacity: 0;
+                  visibility: hidden;
+                  top: 30%;
+                  transform: translateX(92%);
+                  @media (max-width: 790px) {
+                    opacity: 1;
+                    visibility: visible;
+                    top: 0;
+                    transform: unset;
+                  }
+                }
+                @media (max-width: 790px) {
+                  .show {
+                    .navList {
+                      opacity: 1;
+                      visibility: visible;
+                      transform: translateX(0) !important;
+                      transition: 1s;
+                    }
+                  }
+                  .hide {
+                    .navList {
+                      opacity: 0;
+                      visibility: hidden;
+                      transform: translateX(100%);
+                      transition: 1s;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        @media (max-width: 790px) {
+          padding-top: 130px;
+          flex-direction: column;
+          position: fixed;
+          right: 0;
+          top: 0;
+          width: 70%;
+          height: 100%;
+          background-color: $titleColor;
+          padding-left: 25px;
+          padding-right: 25px;
+          animation-name: closeMenu;
+          animation-duration: 1s;
+          z-index: 98;
+          transform: translateX(100%);
+          transition: 1s;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.mobileMenuHeader {
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    height: 50px;
+  }
+  &.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+  }
+  transform: translateX(100%);
+  transition: 1s;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  position: fixed;
+  width: 70%;
+  z-index: 99;
+  top: 20px;
+  height: 50px !important;
+  right: -25px;
+  .mobileMenuLogo {
+    width: 50px;
+    height: 50px;
+    background-color: $titleColor;
+  }
+  .mobileMenuTitle {
+    padding-left: 30px;
+    font-size: 18px;
+    color: $titleColor;
+  }
+}
+
+.listWrapper {
+  @media (max-width: 790px) {
+    height: 100%;
+  }
+}
+
+.backNavListBtn {
+  position: fixed;
+  top: 85px;
+  left: 25px;
+  border-bottom: 1px solid $titleColor;
+  width: 100%;
+  padding: 13px 0;
+  z-index: 99;
+}

@@ -1,4 +1,3 @@
-import { loadavg } from "os";
 import React from "react";
 import "./About.scss";
 import { User } from "./User";

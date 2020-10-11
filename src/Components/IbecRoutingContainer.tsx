@@ -17,9 +17,9 @@ export const IbecRouting: React.FC<any> = (props) => {
       <Header />
       <div className="wrapper">
         <Switch>
-          <Route exact path="/" component={() => <MainPage />} />
-          <Route exact path="/about" component={() => <AboutContainer />} />
-          <Route exact path="/contacts" component={() => <Contacts />} />
+          <Route exact path="/ibec-systems-test" component={() => <MainPage />} />
+          <Route exact path="/ibec-systems-test/about" component={() => <AboutContainer />} />
+          <Route exact path="/ibec-systems-test/contacts" component={() => <Contacts />} />
           <Route component={() => <NoMatch />} />
         </Switch>
         <Footer />
